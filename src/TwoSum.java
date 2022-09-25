@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class TwoSum {// przypadek w którym są tylko 2 liczby
+public class TwoSum {
 
     public static void main(String[] args) {
         int table[] = {1, 2, 3, 4, 6};
@@ -12,7 +12,6 @@ public class TwoSum {// przypadek w którym są tylko 2 liczby
         int[] result = new int[2];
         for (int i = 0; i < nums.length; i++) {
             if (!complement.contains(nums[i])) {
-//                complement.putIfAbsent(i, target - nums[i]);
                 complement.add(target - nums[i]);
             } else {
                 result[0] = complement.stream().collect(Collectors.toList()).indexOf(nums[i]);
