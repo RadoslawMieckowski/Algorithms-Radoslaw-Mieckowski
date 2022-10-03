@@ -62,11 +62,7 @@ class SameTree {
             visitedVertexesQ.add(currentNode.val);
         }
         System.out.println(visitedVertexesQ);
-        if (Arrays.equals(
-                visitedVertexesP.toArray(),
-                visitedVertexesQ.toArray()
-            )
-        ) {
+        if (visitedVertexesP.equals(visitedVertexesQ)) {
             return true;
         }
         else {
