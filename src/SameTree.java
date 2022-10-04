@@ -33,33 +33,10 @@ class SameTree {
         System.out.println(isSameTree(pv4, qv4));
     }
     public static boolean isSameTree(TreeNode p, TreeNode q) {
-        Queue<TreeNode> queueP =  new LinkedList<>();
-        List<Integer> visitedVertexesP = new LinkedList<>();
-        queueP.add(p);
-        while (!queueP.isEmpty()) {
-            TreeNode currentNode = queueP.remove();
-            if(currentNode.left != null) {
-                queueP.add(currentNode.left);
-            }
-            if(currentNode.right != null) {
-                queueP.add(currentNode.right);
-            }
-            visitedVertexesP.add(currentNode.val);
-        }
+        List<Integer> visitedVertexesP = BFSTraversal(p);
         System.out.println(visitedVertexesP);
-        Queue<TreeNode> queueQ =  new LinkedList<>();
-        List<Integer> visitedVertexesQ = new LinkedList<>();
-        queueQ.add(q);
-        while (!queueQ.isEmpty()) {
-            TreeNode currentNode = queueQ.remove();
-            if(currentNode.left != null) {
-                queueQ.add(currentNode.left);
-            }
-            if(currentNode.right != null) {
-                queueQ.add(currentNode.right);
-            }
-            visitedVertexesQ.add(currentNode.val);
-        }
+
+        List<Integer> visitedVertexesQ = BFSTraversal(q);
         System.out.println(visitedVertexesQ);
         if (visitedVertexesP.equals(visitedVertexesQ)) {
             return true;
@@ -67,6 +44,23 @@ class SameTree {
         else {
             return false;
         }
+    }
+
+    public static List<Integer> BFSTraversal(TreeNode root) {
+        Queue<TreeNode> queue =  new LinkedList<>();
+        List<Integer> visitedVertexes = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode currentNode = queue.remove();
+            if(currentNode.left != null) {
+                queue.add(currentNode.left);
+            }
+            if(currentNode.right != null) {
+                queue.add(currentNode.right);
+            }
+            visitedVertexes.add(currentNode.val);
+        }
+        return visitedVertexes;
     }
 }
 class TreeNode {
